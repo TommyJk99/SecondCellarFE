@@ -12,6 +12,11 @@ module.exports = {
     extend: {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+        greatVibes: ["Great Vibes", "cursive"],
+      },
+      animation: {
+        "border-wave": "borderWave 12s infinite linear",
+        shake: "shake 2s cubic-bezier(.36,.07,.19,.97) both",
       },
     },
   },
