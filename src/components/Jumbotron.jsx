@@ -3,7 +3,7 @@ import GrapeLogo from "./Logo"
 
 export default function Jumbotron() {
   return (
-    <div className="relative mt-20 ml-40 font-bold font-poppins">
+    <div className="relative mt-20 ml-40 font-bold font-poppins h-[380px]">
       {/* Zona del testo con z-index più alto */}
       <div className="absolute top-0 left-0 z-20 drop-shadow-[0_1.8px_1.8px_rgba(0,0,0,0.8)]">
         <span className="text-[8rem] bold text-white">

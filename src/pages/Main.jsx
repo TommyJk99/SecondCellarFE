@@ -7,10 +7,10 @@ export default function Main() {
   return (
     <>
       <MyNav />
-      <div className="h-[500px] pt-3 pb-0 bg-gradient-to-t from-thema2 via-thema3 to-thema4">
+      <div className="z-0 h-full pt-3 bg-gradient-to-t from-thema2 via-thema3 to-thema4">
         <Jumbotron />
+        <SellBuyWorld />
       </div>
-      <SellBuyWorld />
     </>
   )
 }
