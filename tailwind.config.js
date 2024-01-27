@@ -15,7 +15,7 @@ module.exports = {
         greatVibes: ["Great Vibes", "cursive"],
       },
       animation: {
-        "border-wave": "borderWave 12s infinite linear",
+        "border-wave": "borderWave 14s infinite ease-in-out",
         shake: "shake 2s cubic-bezier(.36,.07,.19,.97) both",
       },
     },
