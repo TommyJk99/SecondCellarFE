@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import Logo from "../assets/images/logo.png"
-import NavSvg from "../assets/svg/nav.svg"
+import Logo from "../../assets/images/logo.png"
+import NavSvg from "../../assets/svg/nav.svg"
 
 export default function MyNav() {
   const [showMenu, setShowMenu] = useState(false)
@@ -9,11 +9,11 @@ export default function MyNav() {
     setShowMenu(!showMenu)
   }
 
-  const navLinks = ["Home", "MyCellar", "Favorite", "Info", "WineWiz"]
+  const navLinks = ["Home", "Buy", "Sell", "WineWorld"]
 
   return (
-    <nav className="font-poppins flex flex-col md:flex-row justify-between items-center w-[98%] shadow-lg">
-      <div className="flex justify-between items-center w-full md:w-auto">
+    <nav className="font-poppins flex flex-col md:flex-row justify-between items-center w-[98%] shadow-lg 2xl:w-full 2xl:pr-8">
+      <div className="flex items-center justify-between w-full md:w-auto">
         <img src={Logo} alt="" className="object-contain  w-[14rem]" />
 
         <button className="md:hidden" onClick={toggleMenu}>
@@ -22,7 +22,7 @@ export default function MyNav() {
       </div>
 
       {showMenu && (
-        <ul className="md:hidden flex flex-col items-center gap-4 mb-3">
+        <ul className="flex flex-col items-center gap-4 mb-3 md:hidden">
           {navLinks.map((text, index) => (
             <li key={index}>
               <a href="/" className="hover:text-thema3">
@@ -30,23 +30,19 @@ export default function MyNav() {
               </a>
             </li>
           ))}
-          <button className="bg-thema2 rounded-full px-4 py-2 hover:bg-thema1 shadow-md">
-            Sign In
-          </button>
+          <button className="px-4 py-2 rounded-full shadow-md bg-thema2 hover:bg-thema1">Sign In</button>
         </ul>
       )}
 
-      <ul className="hidden md:flex items-center gap-10">
+      <ul className="items-center hidden gap-10 md:flex">
         {navLinks.map((text, index) => (
           <li key={index}>
-            <a href="/" className="hover:text-thema3 text-sm">
+            <a href="/" className="text-sm hover:text-thema3">
               {text}
             </a>
           </li>
         ))}
-        <button className="bg-thema2 rounded-full px-4 py-2 hover:bg-thema1 shadow-md">
-          Sign In
-        </button>
+        <button className="px-4 py-2 rounded-full shadow-md bg-thema2 hover:bg-thema1">Sign In</button>
       </ul>
     </nav>
   )

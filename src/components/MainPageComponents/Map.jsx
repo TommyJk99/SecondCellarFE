@@ -1,5 +1,5 @@
 import React from "react"
-import worldmap from "../assets/svg/worldmap.svg"
+import worldmap from "../../assets/svg/worldmap.svg"
 
 export default function WorldMap() {
   return (
