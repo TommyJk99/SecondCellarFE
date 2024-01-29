@@ -1,11 +1,11 @@
 import React from "react"
 import WorldMap from "./Map"
 
-export default function Jumbotron() {
+export default function WineWorldMain() {
   return (
-    <div className="relative mt-0 ml-40 font-bold font-poppins h-[380px]">
+    <div className="relative mt-0 md:ml-28 lg:ml-40 font-bold font-poppins h-[380px]">
       {/* Zona del testo con z-index più alto */}
-      <div className="absolute top-0 right-32 z-20 drop-shadow-[0_1.8px_1.8px_rgba(0,0,0,0.8)] ">
+      <div className="absolute top-0 lg:right-12 z-20 drop-shadow-[0_1.8px_1.8px_rgba(0,0,0,0.8)] ">
         <span className="text-[8rem] bold text-white">
           Explore <span className="text-[4rem]">the</span>
         </span>
@@ -16,7 +16,7 @@ export default function Jumbotron() {
       </div>
 
       {/* Sfere con z-index inferiore */}
-      <div className="absolute top-0 left-0 z-10 rounded-full w-36 h-36 bg-thema2 border-thema4 2xl:left-16 2xl:top-10 2xl:w-52 2xl:h-52 "></div>
+      <div className="absolute z-10 rounded-full bg-thema2 border-thema4 left-12 top-10 w-52 h-52 lg:left-32"></div>
       <div className="absolute top-0 z-10 rounded-full w-80 h-80 right-56 bg-thema1 border-thema4"></div>
       <WorldMap />
     </div>
