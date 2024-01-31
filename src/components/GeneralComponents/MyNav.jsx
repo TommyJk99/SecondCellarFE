@@ -1,9 +1,11 @@
 import React, { useState } from "react"
 import Logo from "../../assets/images/logo.png"
 import NavSvg from "../../assets/svg/nav.svg"
+import { Link, useLocation } from "react-router-dom"
 
 export default function MyNav() {
   const [showMenu, setShowMenu] = useState(false)
+  const location = useLocation()
 
   const toggleMenu = () => {
     setShowMenu(!showMenu)
@@ -12,9 +14,11 @@ export default function MyNav() {
   const navLinks = ["Home", "Buy", "Sell", "WineWorld"]
 
   return (
-    <nav className="font-poppins flex flex-col md:flex-row justify-between items-center w-[98%] shadow-lg 2xl:w-full 2xl:pr-8">
+    <nav className="flex flex-col items-center justify-between md:w-full  md:pr-8 w-[98%] font-poppins md:flex-row 2xl:w-full 2xl:pr-8">
       <div className="flex items-center justify-between w-full md:w-auto">
-        <img src={Logo} alt="" className="object-contain  w-[14rem]" />
+        <Link to={"/"}>
+          <img src={Logo} alt="" className="object-contain  w-[14rem]" />
+        </Link>
 
         <button className="md:hidden" onClick={toggleMenu}>
           <img src={NavSvg} alt="NavSvg" />
@@ -30,7 +34,11 @@ export default function MyNav() {
               </a>
             </li>
           ))}
-          <button className="px-4 py-2 rounded-full shadow-md bg-thema2 hover:bg-thema1">Sign In</button>
+          {location.pathname !== "/sign-in" && (
+            <Link to="/sign-in" className="px-4 py-2 rounded-full shadow-md bg-thema2 hover:bg-thema1">
+              Sign In
+            </Link>
+          )}
         </ul>
       )}
 
@@ -42,7 +50,11 @@ export default function MyNav() {
             </a>
           </li>
         ))}
-        <button className="px-4 py-2 rounded-full shadow-md bg-thema2 hover:bg-thema1">Sign In</button>
+        {location.pathname !== "/sign-in" && (
+          <Link to="/sign-in" className="px-4 py-2 rounded-full shadow-md bg-thema2 hover:bg-thema1">
+            Sign In
+          </Link>
+        )}
       </ul>
     </nav>
   )

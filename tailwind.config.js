@@ -8,7 +8,9 @@ module.exports = {
       thema3: "#BF4497",
       thema4: "#810947",
       thema5: "#DB5800",
+      thema6: "#0075FF",
       white: "#FFFFFF",
+      black: "#000000",
     },
     extend: {
       fontFamily: {
