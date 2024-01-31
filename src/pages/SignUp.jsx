@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import GrapeLogo from "../assets/images/GrapeLogo.png"
 import MyNav from "../components/GeneralComponents/MyNav"
 import warning from "../assets/svg/warning.svg"
+import Axios from "axios"
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -19,8 +20,18 @@ export default function SignUp() {
     setFormData({ ...formData, [e.target.id]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+
+    const isEmailValid = (email) => {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      return regex.test(email)
+    }
+
+    if (!isEmailValid(formData.email)) {
+      setError("Please enter a valid email address.")
+      return
+    }
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match.")
       return
@@ -28,9 +39,24 @@ export default function SignUp() {
       setError("Please fill in all the fields.")
       return
     }
-    console.log("Form Data:", formData)
-    setError("")
-    navigate("/")
+    try {
+      const response = await Axios.post("http://localhost:3030/sign-up", formData, {
+        withCredentials: true, // this will ensure that the cookie is captured
+      })
+
+      console.log("Response:", response.data)
+      setError("")
+      navigate("/")
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message)
+        setError(error.response.data.message)
+      } else if (error.request) {
+        setError("No response from the server :(")
+      } else {
+        setError("Error sending request, retry later.")
+      }
+    }
   }
 
   return (
@@ -98,7 +124,7 @@ export default function SignUp() {
               onChange={handleChange}
             />
           </div>
-
+          {/* It deals with the errors*/}
           {error && (
             <div className="flex justify-center gap-1 mt-5 text-thema3">
               <img src={warning} className="inline w-6" alt="" />
