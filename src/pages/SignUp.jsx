@@ -1,21 +1,51 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import React, { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
 import GrapeLogo from "../assets/images/GrapeLogo.png"
 import MyNav from "../components/GeneralComponents/MyNav"
+import warning from "../assets/svg/warning.svg"
 
 export default function SignUp() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  })
+
+  const [error, setError] = useState("")
+  const navigate = useNavigate()
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords do not match.")
+      return
+    } else if (formData.name === "" || formData.email === "" || formData.password === "" || formData.confirmPassword === "") {
+      setError("Please fill in all the fields.")
+      return
+    }
+    console.log("Form Data:", formData)
+    setError("")
+    navigate("/")
+  }
+
   return (
     <div>
       <MyNav />
       <div className="flex items-center justify-center pt-16 pb-8 shadow-md font-poppins shadow-thema4 bg-gradient-to-t from-thema1 via-thema2 to-thema3">
-        <div className="p-6 bg-white rounded-md shadow-lg w-96">
+        <form className="p-6 bg-white rounded-md shadow-lg w-96" onSubmit={handleSubmit}>
           <h1 className="block text-3xl font-semibold text-center ">
-            SignUp <img src={GrapeLogo} className="inline w-12 h-12" alt="" />
+            SignUp <img src={GrapeLogo} className="inline w-12 h-12" alt="Grape Logo" />
           </h1>
           <hr className="mt-3" />
-          {/* FORM NAME */}
+
+          {/* Form Name */}
           <div className="mt-3">
-            <label for="name" className="block mb-2 text-base">
+            <label htmlFor="name" className="block mb-2 text-base">
               Name:
             </label>
             <input
@@ -23,11 +53,13 @@ export default function SignUp() {
               id="name"
               className="w-full px-2 py-1 text-base border rounded-md focus:outline-1 focus:border-thema4"
               placeholder="Enter name..."
+              onChange={handleChange}
             />
           </div>
-          {/* FORM EMAIL */}
+
+          {/* Form Email */}
           <div className="mt-3">
-            <label for="email" className="block mb-2 text-base">
+            <label htmlFor="email" className="block mb-2 text-base">
               Email:
             </label>
             <input
@@ -35,11 +67,13 @@ export default function SignUp() {
               id="email"
               className="w-full px-2 py-1 text-base border rounded-md focus:outline-1 focus:border-thema4"
               placeholder="Enter email..."
+              onChange={handleChange}
             />
           </div>
-          {/* FORM PSSW */}
+
+          {/* Form Password */}
           <div className="mt-3">
-            <label for="password" className="block mb-2 text-base">
+            <label htmlFor="password" className="block mb-2 text-base">
               Password:
             </label>
             <input
@@ -47,36 +81,47 @@ export default function SignUp() {
               id="password"
               className="w-full px-2 py-1 text-base border rounded-md focus:outline-1 focus:border-thema4"
               placeholder="Enter Password..."
+              onChange={handleChange}
             />
           </div>
-          {/* FORM CONFIRM PSSW */}
+
+          {/* Form Confirm Password */}
           <div className="mt-3">
-            <label for="password" className="block mb-2 text-base">
+            <label htmlFor="confirmPassword" className="block mb-2 text-base">
               Confirm Password:
             </label>
             <input
               type="password"
-              id="password"
+              id="confirmPassword"
               className="w-full px-2 py-1 text-base border rounded-md focus:outline-1 focus:border-thema4"
-              placeholder="Enter Password..."
+              placeholder="Confirm Password..."
+              onChange={handleChange}
             />
           </div>
+
+          {error && (
+            <div className="flex justify-center gap-1 mt-5 text-thema3">
+              <img src={warning} className="inline w-6" alt="" />
+              <div>{error}</div>
+            </div>
+          )}
 
           <div className="mt-5">
             <button
               type="submit"
-              className="w-full py-1 font-semibold transition duration-300 ease-in-out transform border-2 rounded-md hover:bg-thema4 hover:text-white hover:border-black "
+              className="w-full py-1 font-semibold transition duration-300 ease-in-out transform border-2 rounded-md hover:bg-thema4 hover:text-white hover:border-black"
             >
-              &nbsp;&nbsp;Sign up
+              Sign up
             </button>
-            <div className="flex justify-center gap-2 mt-5 text-sm">
-              Registered already?
-              <Link to={"/sign-in"} className="mr-2 font-bold text-thema3 hover:text-thema4 hover:bold">
-                Log in here!
-              </Link>
-            </div>
           </div>
-        </div>
+
+          <div className="flex justify-center gap-2 mt-5 text-sm">
+            Registered already?
+            <Link to={"/sign-in"} className="font-bold text-thema3 hover:text-thema4">
+              Log in here!
+            </Link>
+          </div>
+        </form>
       </div>
     </div>
   )
