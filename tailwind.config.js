@@ -7,7 +7,7 @@ module.exports = {
       thema2: "#FD7FE8",
       thema3: "#BF4497",
       thema4: "#810947",
-      thema5: "#DB5800",
+      thema5: "#ff8000",
       thema6: "#0075FF",
       white: "#FFFFFF",
       black: "#000000",
