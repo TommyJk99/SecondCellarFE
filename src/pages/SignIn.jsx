@@ -18,12 +18,12 @@ export default function SignIn() {
 
   useEffect(() => {
     if (success) {
-      // Imposta un timer per reindirizzare dopo 2 secondi
+      // this will redirect to /me after 1 second
       const timer = setTimeout(() => {
-        navigate("/me") // Reindirizza a /me
-        setSuccess(false) // Opzionale: Resetta success a false se necessario dopo il reindirizzamento
+        navigate("/me")
+        setSuccess(false)
       }, 1000)
-      return () => clearTimeout(timer) // Pulisci il timer se il componente viene smontato
+      return () => clearTimeout(timer)
     }
   }, [success, navigate])
 

@@ -29,9 +29,9 @@ export default function MyNav() {
         <ul className="flex flex-col items-center gap-4 mb-3 md:hidden">
           {navLinks.map((text, index) => (
             <li key={index}>
-              <a href="/" className="hover:text-thema3">
+              <Link to={text === "Home" ? "/" : `/${text.toLowerCase()}`} className="hover:text-thema3">
                 {text}
-              </a>
+              </Link>
             </li>
           ))}
           {location.pathname !== "/sign-in" && (
@@ -45,9 +45,9 @@ export default function MyNav() {
       <ul className="items-center hidden gap-10 md:flex">
         {navLinks.map((text, index) => (
           <li key={index}>
-            <a href="/" className="text-sm hover:text-thema3">
+            <Link to={text === "Home" ? "/" : `/${text.toLowerCase()}`} className="text-sm hover:text-thema3">
               {text}
-            </a>
+            </Link>
           </li>
         ))}
         {location.pathname !== "/sign-in" && (

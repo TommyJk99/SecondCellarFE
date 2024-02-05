@@ -1,5 +1,4 @@
 export default function Spinner() {
-  // Qui puoi inserire l'animazione o un loader che preferisci
   return (
     <div role="status">
       <svg

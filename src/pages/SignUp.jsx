@@ -41,7 +41,7 @@ export default function SignUp() {
     }
     try {
       await Axios.post("http://localhost:3030/sign-up", formData, {
-        withCredentials: true, // this will ensure that the cookie is captured
+        withCredentials: true,
       })
 
       setSuccess(true)
