@@ -81,12 +81,14 @@ export default function Me() {
     )
   } else
     return (
-      <div>
-        <MyNav />
-        <div
-          className={` flex items-center justify-center h-screen shadow-md font-poppins shadow-thema4 bg-gradient-to-t from-thema1 via-thema2 to-thema3 `}
-        >
-          <div>This is your private page, here you can do a bunch of stuff</div>
+      <div className="flex justify-center min-h-screen">
+        <div className="max-w-[1920px] w-full">
+          <MyNav />
+          <div
+            className={` flex items-center justify-center h-screen shadow-md font-poppins shadow-thema4 bg-gradient-to-t from-thema1 via-thema2 to-thema3 `}
+          >
+            <div>This is your private page, here you can do a bunch of stuff</div>
+          </div>
         </div>
       </div>
     )
