@@ -13,13 +13,15 @@ module.exports = {
       black: "#000000",
     },
     extend: {
+      borderRadius: {
+        custom1: "30% 70% 78% 22% / 30% 60% 40% 70% ",
+        custom2: "32% 68% 42% 58% / 57% 47% 53% 43% ",
+        custom3: "58% 42% 51% 49% / 57% 32% 68% 43% ",
+        custom4: "15% 11% 17% 12% / 40% 26% 67% 42%  ",
+      },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         greatVibes: ["Great Vibes", "cursive"],
-      },
-      animation: {
-        "border-wave": "borderWave 14s infinite ease-in-out",
-        shake: "shake 2s cubic-bezier(.36,.07,.19,.97) both",
       },
     },
   },
