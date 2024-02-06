@@ -13,7 +13,7 @@ export default function JumbotronBottle() {
         </p>
       </div>
       <img src={WineBottle} alt="Wine Bottle" className="absolute z-0 -translate-y-1/2 w-60 right-32 top-1/2" />
-      <div className="absolute w-40 h-32 shadow-inner shadow-thema4 rounded-custom1 left-28 top-12 bg-thema2"></div>
+      <div className="absolute w-40 h-32 shadow-inner shadow-thema4 rounded-custom1 left-28 top-12 bg-gradient-to-t from-thema2 to-thema3"></div>
     </div>
   )
 }

@@ -13,7 +13,7 @@ export default function JumbotronGlobe() {
         </p>
       </div>
       <img src={Globe} alt="Wine Bottle" className="absolute z-0 -translate-y-1/2 w-60 left-32 top-1/2" />
-      <div className="absolute h-32 shadow-inner w-52 rounded-custom2 shadow-thema4 rounded-custom right-16 bottom-12 bg-thema2"></div>
+      <div className="absolute h-32 shadow-inner w-52 rounded-custom2 shadow-thema4 rounded-custom right-16 bottom-12 bg-gradient-to-t from-thema1 to-thema2"></div>
     </div>
   )
 }
