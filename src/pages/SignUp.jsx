@@ -88,7 +88,7 @@ export default function SignUp() {
     return (
       <div>
         <MyNav />
-        <div className="flex items-center justify-center pt-16 shadow-md pb-9 font-poppins shadow-thema4 bg-gradient-to-t from-thema1 via-thema2 to-thema3">
+        <div className="flex items-center justify-center h-screen pt-16 shadow-md pb-9 font-poppins shadow-thema4 bg-gradient-to-t from-thema1 via-thema2 to-thema3">
           <form className="p-6 bg-white rounded-md shadow-lg w-96" onSubmit={handleSubmit}>
             <h1 className="block text-3xl font-semibold text-center ">
               SignUp <img src={GrapeLogo} className="inline w-12 h-12" alt="Grape Logo" />

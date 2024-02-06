@@ -36,14 +36,9 @@ const Searchbar = () => {
   }, [query])
 
   return (
-    <form className="w-[500px] relative mt-20">
+    <form className="w-[350px] sm:w-[500px] relative mt-20">
       <div className="relative">
-        <input
-          type="search"
-          placeholder="Search your bottle here!"
-          className="w-full p-4 rounded-full bg-slate-800"
-          onChange={(e) => setQuery(e.target.value)}
-        />
+        <input type="search" placeholder="Search your bottle here!" className="w-full p-4 rounded-full" onChange={(e) => setQuery(e.target.value)} />
         <button type="button" className="absolute p-4 -translate-y-1/2 rounded-full right-1 top-1/2 bg-slate-600">
           <AiOutlineSearch />
         </button>

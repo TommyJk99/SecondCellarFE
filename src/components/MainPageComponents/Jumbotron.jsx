@@ -13,7 +13,6 @@ export default function Jumbotron() {
           Sell <span className="lg:text-[6rem] md:text-[6rem] xl:text-[6rem] font-greatVibes">Wines</span>
         </p>
       </div>
-
       <div className="absolute hidden rounded-full lg:block lg:z-10 xl:z-10 xl:top-20 lg:top-20 bg-thema1 w-60 h-60 left-60 border-thema4 "></div>
       <div className="absolute z-10 rounded-full md:top-8 md:left-96 lg:top-0 lg:left-0 w-36 h-36 bg-thema2 border-thema4 "></div>
       <div className="absolute z-10 w-40 h-40 rounded-full sm:w-52 sm:h-52 top-16 right-14 sm:right-16 md:right-16 lg:right-28 xl:right-56 bg-thema1 border-thema4 "></div>

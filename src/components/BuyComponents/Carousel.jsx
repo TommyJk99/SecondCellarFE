@@ -19,7 +19,7 @@ const Carousel = ({ images }) => {
       <button onClick={prevImage} className="absolute p-2 text-white transform -translate-y-1/2 rounded-full shadow-md bg-thema3 left-10 top-1/2">
         Prev
       </button>
-      <button onClick={nextImage} className="absolute p-2 text-white transform -translate-y-1/2 rounded-full bg-thema3 right-10 top-1/2">
+      <button onClick={nextImage} className="absolute p-2 text-white transform -translate-y-1/2 rounded-full shadow-md bg-thema3 right-10 top-1/2">
         Next
       </button>
     </div>

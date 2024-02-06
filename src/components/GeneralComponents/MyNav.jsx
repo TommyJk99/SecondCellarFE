@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import Logo from "../../assets/images/logo.png"
 import NavSvg from "../../assets/svg/nav.svg"
+import CloseSvg from "../../assets/svg/close.svg"
 import { Link, useLocation } from "react-router-dom"
 
 export default function MyNav() {
@@ -20,13 +21,24 @@ export default function MyNav() {
           <img src={Logo} alt="" className="object-contain  w-[14rem]" />
         </Link>
 
-        <button className="md:hidden" onClick={toggleMenu}>
-          <img src={NavSvg} alt="NavSvg" />
+        <button className="relative flex items-center justify-center w-10 h-10 mr-2 md:hidden" onClick={toggleMenu}>
+          <img
+            src={NavSvg}
+            alt="Menu Icon"
+            className={`absolute transition-opacity duration-300 ${showMenu ? "opacity-0" : "opacity-100"}`}
+            style={{ width: 24, height: 24 }}
+          />
+          <img
+            src={CloseSvg}
+            alt="Close Icon"
+            className={`absolute transition-opacity duration-300 ${showMenu ? "opacity-100" : "opacity-0"}`}
+            style={{ width: 24, height: 24 }}
+          />
         </button>
       </div>
 
       {showMenu && (
-        <ul className="flex flex-col items-center gap-4 mb-3 md:hidden">
+        <ul className="flex flex-col items-center gap-4 mt-5 mb-5 md:hidden">
           {navLinks.map((text, index) => (
             <li key={index}>
               <Link to={text === "Home" ? "/" : `/${text.toLowerCase()}`} className="hover:text-thema3">
