@@ -18,6 +18,7 @@ module.exports = {
         custom2: "32% 68% 42% 58% / 57% 47% 53% 43% ",
         custom3: "58% 42% 51% 49% / 57% 32% 68% 43% ",
         custom4: "15% 11% 17% 12% / 40% 26% 67% 42%  ",
+        custom5: "36% 64% 51% 49% / 46% 46% 54% 54% ",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

@@ -8,3 +8,12 @@ input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
   appearance: none;
 }
+
+.overflow-y-auto::-webkit-scrollbar {
+  display: none;
+}
+
+// Hide scrollbar for IE, Edge, Firefox, Chrome and Safari
+body::-webkit-scrollbar {
+  display: none;
+}

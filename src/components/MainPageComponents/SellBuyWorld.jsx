@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 export default function SellBuyWorld() {
   return (
-    <div className="z-20 flex flex-wrap gap-10 mx-6 mt-5 mb-14 justify-evenly">
+    <div className="flex flex-wrap gap-10 mx-6 mt-5  mb-14 justify-evenly">
       <Link
         to="/buy"
         className="flex shadow-thema3 items-center justify-center w-[280px] h-[100px] transform transition duration-500 hover:scale-110 hover:shadow-xl hover:bg-white rounded-custom3 shadow-md  bg-thema1 border-thema3"
