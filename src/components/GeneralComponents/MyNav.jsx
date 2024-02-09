@@ -3,6 +3,7 @@ import Logo from "../../assets/images/logo.png"
 import NavSvg from "../../assets/svg/nav.svg"
 import CloseSvg from "../../assets/svg/close.svg"
 import { Link, useLocation } from "react-router-dom"
+import userProfile from "../../assets/svg/userprofile.svg"
 
 export default function MyNav() {
   const [showMenu, setShowMenu] = useState(false)
@@ -12,10 +13,10 @@ export default function MyNav() {
     setShowMenu(!showMenu)
   }
 
-  const navLinks = ["Home", "Buy", "Sell", "WineWorld"]
+  const navLinks = ["Home", "Buy", "MyCellar", "WineWorld"]
 
   return (
-    <nav className="flex flex-col items-center justify-between md:w-full  md:pr-8 w-[98%] font-poppins md:flex-row 2xl:w-full 2xl:pr-8">
+    <nav className="sticky top-0 z-30 flex flex-col items-center justify-between w-full bg-white shadow-md shadow-thema3/60 md:pr-8 font-poppins md:flex-row 2xl:w-full 2xl:pr-8">
       <div className="flex items-center justify-between w-full md:w-auto">
         <Link to={"/"}>
           <img src={Logo} alt="" className="object-contain  w-[14rem]" />
@@ -62,9 +63,16 @@ export default function MyNav() {
             </Link>
           </li>
         ))}
-        {location.pathname !== "/sign-in" && (
-          <Link to="/sign-in" className="px-4 py-2 rounded-full shadow-md bg-thema2 hover:bg-thema1">
+        {location.pathname !== "/sign-in" && location.pathname !== "/mycellar" && (
+          <Link to="/sign-in" className="px-4 py-2 text-white rounded-full shadow-md bg-thema2 hover:bg-thema1">
             Sign In
+          </Link>
+        )}
+
+        {/* The immage profile should be picked up from the user's profile */}
+        {location.pathname === "/mycellar" && (
+          <Link to="my-profile">
+            <img src={userProfile} alt="user-profile" className="w-10" />
           </Link>
         )}
       </ul>

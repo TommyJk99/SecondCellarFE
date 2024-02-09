@@ -6,6 +6,8 @@ import warning from "../assets/svg/warning.svg"
 import Axios from "axios"
 import Spinner from "../components/LoadingComponents/Spinner"
 
+// i should have used a centralized auth service and error handling
+//i created a new file called AuthService.js in the auth folder that i didn't include in the snippet
 export default function SignIn() {
   const [formData, setFormData] = useState({
     email: "",
@@ -14,13 +16,15 @@ export default function SignIn() {
 
   const [error, setError] = useState("")
   const [success, setSuccess] = useState(false)
+  const [errorKey, setErrorKey] = useState(0) //This is used to force the re-render of the component when the error changes
+
   const navigate = useNavigate()
 
   useEffect(() => {
     if (success) {
       // this will redirect to /me after 1 second
       const timer = setTimeout(() => {
-        navigate("/me")
+        navigate("/mycellar")
         setSuccess(false)
       }, 1000)
       return () => clearTimeout(timer)
@@ -41,6 +45,7 @@ export default function SignIn() {
 
     if (!isEmailValid(formData.email)) {
       setError("Please enter a valid email address.")
+      setErrorKey((prevKey) => prevKey + 1)
       return
     }
 
@@ -57,12 +62,14 @@ export default function SignIn() {
       })
     } catch (error) {
       if (error.response) {
-        console.log(error.response.data.message)
         setError(error.response.data.message)
+        setErrorKey((prevKey) => prevKey + 1)
       } else if (error.request) {
         setError("No response from the server :(")
+        setErrorKey((prevKey) => prevKey + 1)
       } else {
         setError("Something went wrong :(")
+        setErrorKey((prevKey) => prevKey + 1)
       }
     }
   }
@@ -108,8 +115,8 @@ export default function SignIn() {
               />
             </div>
             {error && (
-              <div className="flex justify-center gap-1 mt-5 text-thema3">
-                <img src={warning} className="inline w-6" alt="" />
+              <div key={errorKey} className="flex justify-center gap-1 mt-5 text-thema3">
+                <img src={warning} className="inline w-6 animate-pulse" alt="" />
                 <div>{error}</div>
               </div>
             )}

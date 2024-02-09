@@ -3,7 +3,7 @@ import WineBottle from "../../assets/svg/bottle.svg"
 export default function JumbotronBottle() {
   return (
     <div
-      className="relative pt-10 pb-10 mt-10 mb-10 shadow-md shadow-thema3 w-[23rem] sm:w-[30rem] lg:w-[35rem] xl:w-[40rem] bg-thema1 rounded-custom1"
+      className="relative pt-10 pb-10 mt-20 mb-10 shadow-md shadow-thema3 w-[23rem] sm:w-[30rem] lg:w-[35rem] xl:w-[40rem] bg-thema1 rounded-custom1"
       style={{ zIndex: 1 }}
     >
       <div className="relative z-10 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">

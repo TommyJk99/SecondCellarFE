@@ -9,11 +9,26 @@ input[type="search"]::-webkit-search-cancel-button {
   appearance: none;
 }
 
+//footer
+.custom-shape-divider-bottom-1707475185 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1707473748 .shape-fill {
+  fill: #ffbbff;
+}
+
 .overflow-y-auto::-webkit-scrollbar {
   display: none;
 }
 
-// Hide scrollbar for IE, Edge, Firefox, Chrome and Safari
-body::-webkit-scrollbar {
-  display: none;
+/* Barra di scorrimento verticale */
+::-webkit-scrollbar {
+  width: 0px; /* Larghezza della barra di scorrimento verticale */
 }

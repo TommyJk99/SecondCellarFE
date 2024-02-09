@@ -20,6 +20,15 @@ module.exports = {
         custom4: "15% 11% 17% 12% / 40% 26% 67% 42%  ",
         custom5: "36% 64% 51% 49% / 46% 46% 54% 54% ",
       },
+      animation: {
+        pulse: "pulse 0.5s cubic-bezier(0.4, 0, 0.6, 1)",
+      },
+      keyframes: {
+        pulse: {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.40)" },
+        },
+      },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         greatVibes: ["Great Vibes", "cursive"],

@@ -41,7 +41,7 @@ const Searchbar = () => {
         <input
           type="search"
           placeholder="Search your bottle here!"
-          className="w-full p-8 rounded-custom2 focus:outline-none focus:shadow-md focus:shadow-thema4"
+          className="w-full p-8 shadow-inner rounded-custom2 focus:outline-none shadow-thema4"
           onChange={(e) => setQuery(e.target.value)}
         />
         <button type="button" className="absolute p-4 -translate-y-1/2 rounded-full right-1 top-1/2 bg-slate-600">
@@ -50,7 +50,7 @@ const Searchbar = () => {
       </div>
 
       {activeSearch.length > 0 && (
-        <div className="absolute flex flex-col w-full gap-2 px-16 py-6 text-black -translate-x-1/2 bg-white shadow-lg shadow-thema3 top-28 rounded-custom4 left-1/2">
+        <div className="absolute flex flex-col w-full gap-2 px-16 py-6 text-black -translate-x-1/2 bg-white shadow-inner shadow-thema4 top-28 rounded-custom4 left-1/2">
           {activeSearch.map((wine, index) => (
             <Link to={`/wine/${encodeURIComponent(wine.wineName)}/${wine.publisher}`} key={`${wine.wineName}-${index}`}>
               <div className="flex justify-between">

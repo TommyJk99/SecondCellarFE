@@ -6,11 +6,11 @@ const Modal = ({ open, onClose, children }) => {
   return (
     <div
       onClick={onClose}
-      className={`fixed inset-0 flex items-center justify-center transition-colors ${open ? "visible bg-black/40" : "invisible"}`}
+      className={`fixed  inset-0 flex items-center justify-center mt-8 transition-colors ${open ? "visible bg-black/40" : "invisible"}`}
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`bg-gradient-to-t from-thema1 to-white w-96 h-[30rem] rounded-xl shadow-md shadow-thema4/40 p-6 transition-all ${
+        className={`bg-gradient-to-t from-thema1 to-white w-96 h-[24rem] rounded-xl shadow-md shadow-thema4/40 p-6 transition-all ${
           open ? "scale-100 opacity-100" : "scale-125 opacity-0"
         }`}
       >

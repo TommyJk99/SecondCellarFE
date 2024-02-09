@@ -15,11 +15,14 @@ export default function SignUp() {
 
   const [error, setError] = useState("")
   const [success, setSuccess] = useState(false)
+  const [errorKey, setErrorKey] = useState(0) //This is used to force the re-render of the component when the error changes
 
+  //handleChange is used to update the state of the form data
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value })
   }
 
+  //handleSubmit is used to send the form data to the server
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -30,13 +33,16 @@ export default function SignUp() {
 
     if (!isEmailValid(formData.email)) {
       setError("Please enter a valid email address.")
+      setErrorKey((prevKey) => prevKey + 1)
       return
     }
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match.")
+      setErrorKey((prevKey) => prevKey + 1)
       return
     } else if (formData.name === "" || formData.email === "" || formData.password === "" || formData.confirmPassword === "") {
       setError("Please fill in all the fields.")
+      setErrorKey((prevKey) => prevKey + 1)
       return
     }
     try {
@@ -53,12 +59,14 @@ export default function SignUp() {
       })
     } catch (error) {
       if (error.response) {
-        console.log(error.response.data.message)
         setError(error.response.data.message)
+        setErrorKey((prevKey) => prevKey + 1)
       } else if (error.request) {
         setError("No response from the server :(")
+        setErrorKey((prevKey) => prevKey + 1)
       } else {
         setError("Error sending request, retry later.")
+        setErrorKey((prevKey) => prevKey + 1)
       }
     }
   }
@@ -68,7 +76,7 @@ export default function SignUp() {
         <div className="max-w-[1920px] w-full">
           <MyNav />
           <div className="flex items-center justify-center h-screen bg-thema4 font-poppins">
-            <div className="flex flex-col items-center justify-center px-10 py-10 shadow-[rgba(0,_0,_0,_0.5)_0px_30px_90px] rounded-xl bg-thema1">
+            <div className="flex flex-col  px-14 py-16 shadow-[rgba(0,_0,_0,_0.5)_0px_30px_90px] rounded-custom1  bg-thema1">
               <p className="font-bold text-thema4">REGISTRATION SUCCESSFUL!</p>
               <br />
               <div>
@@ -155,8 +163,8 @@ export default function SignUp() {
               </div>
               {/* It deals with the errors*/}
               {error && (
-                <div className="flex justify-center gap-1 mt-5 text-thema3">
-                  <img src={warning} className="inline w-6" alt="" />
+                <div key={errorKey} className="flex justify-center gap-1 mt-5 text-thema3">
+                  <img src={warning} className="inline w-6 animate-pulse" alt="error" />
                   <div className="">{error}</div>
                 </div>
               )}
