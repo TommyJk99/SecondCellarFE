@@ -13,7 +13,7 @@ export default function Footer() {
           ></path>
         </svg>
       </div>
-      <div className="flex flex-wrap items-center justify-center gap-20 mb-32 text-center sm:text-left wrap font-poppins">
+      <div className="flex flex-wrap items-center justify-center gap-20 text-center mb-14 gap-y-6 sm-gap-y-20 sm:text-left wrap font-poppins">
         {/* <img src={Logo} alt="logo" className="w-20 h-20 mt-[-8rem] opacity-30" /> */}
         <div className="flex flex-col justify-center">
           <p className="p-3 mb-5 font-bold shadow-inner text-thema4 shadow-thema4 rounded-custom1 bg-thema1">FIND US</p>
@@ -21,12 +21,12 @@ export default function Footer() {
           <p>20124 Milano</p>
         </div>
         <div className="flex flex-col justify-center">
-          <p className="p-4 mb-5 font-bold shadow-inner text-thema4 shadow-thema4 rounded-custom3 bg-thema1">CONTACT US </p>
+          <p className="p-4 mt-8 mb-5 font-bold shadow-inner sm:mt-0 text-thema4 shadow-thema4 rounded-custom3 bg-thema1">CONTACT US </p>
           <p>info@secondcellar.it</p>
           <p>(+39) 029 17 26 304</p>
           <p>Copyright © 2021 </p>
         </div>
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-center mr-20 sm:mr-0">
           <p className="p-3 mb-5 font-bold shadow-inner text-thema4 shadow-thema4 rounded-custom2 bg-thema1">INFO</p>
           <Link to="/privay-policy"> Privacy policy </Link>
           <Link to="/privay-policy"> Cookie Policy</Link>

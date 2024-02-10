@@ -57,7 +57,7 @@ export default function AskSommelier() {
 
   return (
     <div>
-      <img src={sommelier} alt="Ask the Sommelier" className="w-20 h-20" onClick={() => setOpen(true)} style={{ cursor: "pointer" }} />
+      <img src={sommelier} alt="Ask the Sommelier" className="w-16 sm:w-20 sm:h-20" onClick={() => setOpen(true)} style={{ cursor: "pointer" }} />
       <Modal open={open} onClose={() => setOpen(false)}>
         <div className="flex flex-col justify-between h-full">
           <div className="mt-3 overflow-y-auto scroll-smooth" ref={messagesEndRef}>
