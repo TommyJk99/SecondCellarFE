@@ -10,7 +10,7 @@ const Modal = ({ open, onClose, children }) => {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`bg-gradient-to-t from-thema1 to-white w-96 h-[24rem] rounded-xl shadow-md shadow-thema4/40 p-6 transition-all ${
+        className={`bg-gradient-to-t from-thema1 to-white w-[22rem] sm:w-96 h-[26rem] rounded-xl shadow-md shadow-thema4/40 p-6 transition-all ${
           open ? "scale-100 opacity-100" : "scale-125 opacity-0"
         }`}
       >

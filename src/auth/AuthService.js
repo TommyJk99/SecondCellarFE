@@ -6,16 +6,20 @@ const axiosInstance = Axios.create({
   withCredentials: true,
 })
 
+//this function checks if the user is authenticated and returns the user data
 const checkAuth = async () => {
   try {
     const response = await axiosInstance.get("/users/me")
-    return response.status === 200
+    if (response.status === 200) {
+      return response.data
+    }
   } catch (error) {
     console.error("Authentication check failed", error)
     throw error
   }
 }
 
+//this function logs the user in
 const signIn = async (formData) => {
   try {
     const response = await axiosInstance.post("/sign-in", formData)
@@ -25,6 +29,7 @@ const signIn = async (formData) => {
   }
 }
 
+//this function logs the user out
 const logout = async () => {
   try {
     await axiosInstance.post("/sign-out")
@@ -34,6 +39,7 @@ const logout = async () => {
   }
 }
 
+//this function refreshes the access token using the refresh token
 const refreshToken = async () => {
   try {
     const response = await axiosInstance.post("/refresh-token")

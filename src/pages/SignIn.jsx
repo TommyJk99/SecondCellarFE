@@ -91,7 +91,7 @@ export default function SignIn() {
             <hr className="mt-3" />
 
             <div className="mt-3">
-              <label for="email" className="block mb-2 text-base">
+              <label htmlFor="email" className="block mb-2 text-base">
                 Email:
               </label>
               <input
@@ -103,7 +103,7 @@ export default function SignIn() {
               />
             </div>
             <div className="mt-3">
-              <label for="password" className="block mb-2 text-base">
+              <label htmlFor="password" className="block mb-2 text-base">
                 Password:
               </label>
               <input

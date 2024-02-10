@@ -4,30 +4,38 @@ import Spinner from "../components/LoadingComponents/Spinner"
 import { Link } from "react-router-dom"
 import SellFavoritesCart from "../components/MyCellarComponents/SellFavoritesCart"
 import { checkAuth, refreshToken } from "../auth/AuthService"
+import OnSale from "../components/MyCellarComponents/OnSale"
 
 export default function MyCellar() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  const [userDetails, setUserDetails] = useState(null)
   const [error, setError] = useState("")
 
   useEffect(() => {
     const authenticate = async () => {
+      setIsLoading(true)
       try {
-        const authStatus = await checkAuth()
-        setIsAuthenticated(authStatus)
-        setError("") // Pulisce l'errore se l'autenticazione ha successo
+        const userData = await checkAuth()
+        setIsAuthenticated(true)
+        setUserDetails(userData) // the user details are saved if authenticated
+        setError("")
       } catch (error) {
         try {
-          const refreshStatus = await refreshToken()
-          if (refreshStatus) {
-            const authStatus = await checkAuth()
-            setIsAuthenticated(authStatus)
-            setError("") // Pulisce l'errore se l'autenticazione ha successo dopo il rinnovo del token
+          const refreshSuccess = await refreshToken()
+          if (refreshSuccess) {
+            const userData = await checkAuth() // if the refresh token is valid, get the user data
+            setIsAuthenticated(true)
+            setUserDetails(userData)
+            setError("")
           } else {
-            setError("Autenticazione fallita. Per favore, prova di nuovo.")
+            setIsAuthenticated(false)
+            setError("Per favore, effettua il login.")
           }
         } catch (refreshError) {
-          setError("Autenticazione fallita. Per favore, prova di nuovo.")
+          console.error("Token refresh failed", refreshError)
+          setIsAuthenticated(false)
+          setError("Autenticazione fallita.")
         }
       } finally {
         setIsLoading(false)
@@ -35,7 +43,6 @@ export default function MyCellar() {
     }
     authenticate()
   }, [])
-
   if (isLoading) {
     return (
       <div>
@@ -50,16 +57,14 @@ export default function MyCellar() {
   if (error) {
     return (
       <div>
-        <div
-          className={` flex items-center justify-center h-screen shadow-md font-poppins shadow-thema4 bg-gradient-to-t from-thema1 via-thema2 to-thema3 `}
-        >
-          <div className="mx-8 text-center text-[20px] rounded-custom1 bg-white p-14">
-            ⛔ Errore: {error}
+        <div className={` flex items-center justify-center h-screen font-poppins bg-gradient-to-t from-thema1 via-thema2 to-thema3 `}>
+          <div className="mx-8 text-center text-[20px] rounded-custom1 bg-white p-14 shadow-inner shadow-thema4">
+            ⛔ Errore Autenticazione: {error}
             <p>
               <Link to="/sign-in" className="font-bold text-thema4 hover:text-thema3">
                 Clicca qui
               </Link>{" "}
-              per tornare alla pagina di login
+              per effettuare il login
             </p>
           </div>
         </div>
@@ -70,18 +75,15 @@ export default function MyCellar() {
   if (!isAuthenticated) {
     return (
       <div>
-        <MyNav />
-        <div className="flex items-center justify-center h-screen">
-          <div className="text-center">
-            ⛔ You are NOT authenticated, please{" "}
-            <Link to="/sign-in" className="font-bold text-thema4 hover:text-thema3">
-              sign in
-            </Link>{" "}
-            or{" "}
-            <Link to="/sign-up" className="font-bold text-thema4 hover:text-thema3">
-              sign up
-            </Link>
-            .
+        <div className={` flex items-center justify-center h-screen font-poppins bg-gradient-to-t from-thema1 via-thema2 to-thema3 `}>
+          <div className="mx-8 text-center text-[20px] rounded-custom1 bg-white p-14 shadow-inner shadow-thema4">
+            ⛔ Errore Autenticazione: {error}
+            <p>
+              <Link to="/sign-in" className="font-bold text-thema4 hover:text-thema3">
+                Clicca qui
+              </Link>{" "}
+              per effettuare il login
+            </p>
           </div>
         </div>
       </div>
@@ -89,11 +91,13 @@ export default function MyCellar() {
   }
 
   return (
+    // this will provide: favorite wines, selled wines, cart
     <div className="flex justify-center min-h-screen">
       <div className="max-w-[1920px] w-full">
-        <MyNav />
+        <MyNav userDetails={userDetails} />
         <div className="flex flex-col justify-center w-full min-h-screen font-poppins bg-gradient-to-t from-thema1 via-thema2 to-thema3">
           <SellFavoritesCart />
+          <OnSale />
         </div>
       </div>
     </div>
