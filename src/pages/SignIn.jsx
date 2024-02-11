@@ -5,6 +5,7 @@ import MyNav from "../components/GeneralComponents/MyNav"
 import warning from "../assets/svg/warning.svg"
 import Axios from "axios"
 import Spinner from "../components/LoadingComponents/Spinner"
+import { useScrollToTop } from "../components/MyHooks/scrollToTop"
 
 // i should have used a centralized auth service and error handling
 //i created a new file called AuthService.js in the auth folder that i didn't include in the snippet
@@ -18,6 +19,7 @@ export default function SignIn() {
   const [success, setSuccess] = useState(false)
   const [errorKey, setErrorKey] = useState(0) //This is used to force the re-render of the component when the error changes
 
+  useScrollToTop()
   const navigate = useNavigate()
 
   useEffect(() => {

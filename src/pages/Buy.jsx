@@ -1,8 +1,10 @@
 import React from "react"
 import MyNav from "../components/GeneralComponents/MyNav"
 import Searchbar from "../components/BuyComponents/SearchBar"
+import { useScrollToTop } from "../components/MyHooks/scrollToTop"
 
 export default function Buy() {
+  useScrollToTop()
   return (
     <div className="flex justify-center min-h-screen">
       <div className="max-w-[1920px] w-full">

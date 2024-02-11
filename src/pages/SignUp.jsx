@@ -4,6 +4,7 @@ import GrapeLogo from "../assets/images/GrapeLogo.png"
 import MyNav from "../components/GeneralComponents/MyNav"
 import warning from "../assets/svg/warning.svg"
 import Axios from "axios"
+import { useScrollToTop } from "../components/MyHooks/scrollToTop"
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -16,6 +17,8 @@ export default function SignUp() {
   const [error, setError] = useState("")
   const [success, setSuccess] = useState(false)
   const [errorKey, setErrorKey] = useState(0) //This is used to force the re-render of the component when the error changes
+
+  useScrollToTop()
 
   //handleChange is used to update the state of the form data
   const handleChange = (e) => {
@@ -84,7 +87,7 @@ export default function SignUp() {
               </div>{" "}
               <p>
                 You can click{" "}
-                <Link to={"/me"} className="font-bold text-thema4 hover:text-thema3">
+                <Link to={"/mycellar"} className="font-bold text-thema4 hover:text-thema3">
                   here
                 </Link>{" "}
                 to access your dashboard.

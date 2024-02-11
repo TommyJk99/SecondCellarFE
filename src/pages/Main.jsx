@@ -6,10 +6,13 @@ import JumbotronSommelier from "../components/MainPageComponents/JumbotronSommel
 import SellBuyWorld from "../components/MainPageComponents/SellBuyWorld"
 import Footer from "../components/GeneralComponents/Footer"
 import { checkAuth } from "../auth/AuthService"
+import { useScrollToTop } from "../components/MyHooks/scrollToTop"
 
 export default function Main() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [userDetails, setUserDetails] = useState(null)
+
+  useScrollToTop()
 
   useEffect(() => {
     const authenticate = async () => {

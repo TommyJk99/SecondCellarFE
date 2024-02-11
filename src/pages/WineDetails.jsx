@@ -3,10 +3,16 @@ import { useParams } from "react-router-dom"
 import axios from "axios"
 import MyNav from "../components/GeneralComponents/MyNav"
 import Carousel from "../components/BuyComponents/Carousel"
+import Spinner from "../components/LoadingComponents/Spinner"
+import { useScrollToTop } from "../components/MyHooks/scrollToTop"
+
+//NEED A BUTTON TO ADD TO CART AND A CALL TO SEE IF THE USER IS LOGGED IN
 
 export default function WineDetails() {
   const { wineName, publisher } = useParams()
   const [wineDetails, setWineDetails] = useState(null)
+
+  useScrollToTop()
 
   useEffect(() => {
     const fetchWineDetails = async () => {
@@ -22,7 +28,14 @@ export default function WineDetails() {
   }, [wineName, publisher])
 
   if (!wineDetails) {
-    return <div>Loading...</div>
+    return (
+      <div>
+        <MyNav />
+        <div className="flex items-center justify-center h-screen bg-gradient-to-t from-thema1 via-thema2 to-thema3">
+          <Spinner />
+        </div>
+      </div>
+    )
   }
 
   // miss deatails
@@ -35,7 +48,10 @@ export default function WineDetails() {
       <div className="max-w-[1920px] w-full">
         <MyNav />
         <div className="flex flex-col items-center h-full justify-evenly font-poppins bg-gradient-to-t from-thema2 via-thema3 to-thema4">
-          <p className="text-[2.5rem] sm:text-[3rem] font-semibold text-center text-white mt-10">{wineDetails.wineName}</p>
+          <p className="text-[2.5rem] sm:text-[3rem] font-semibold text-center text-white mt-10">
+            {/* I should add a button to add to cart and favorite, and a link to sign in case the user is not logged. I also need a link to the seller's page */}
+            {wineDetails.wineName} <span className="text-[2.0rem] sm:text-[2.5rem]">⭐ 🛒</span>
+          </p>
           <div className="pt-10 pb-10 mt-5 mb-10 shadow-inner shadow-thema3 w-[23rem] sm:w-[30rem] lg:w-[35rem] xl:w-[40rem] bg-thema1 rounded-[50px]">
             <Carousel images={wineDetails.wineImages} />
           </div>

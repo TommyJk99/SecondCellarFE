@@ -5,12 +5,15 @@ import { Link } from "react-router-dom"
 import SellFavoritesCart from "../components/MyCellarComponents/SellFavoritesCart"
 import { checkAuth, refreshToken } from "../auth/AuthService"
 import OnSale from "../components/MyCellarComponents/OnSale"
+import { useScrollToTop } from "../components/MyHooks/scrollToTop"
 
 export default function MyCellar() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [userDetails, setUserDetails] = useState(null)
   const [error, setError] = useState("")
+
+  useScrollToTop()
 
   useEffect(() => {
     const authenticate = async () => {
@@ -47,7 +50,7 @@ export default function MyCellar() {
     return (
       <div>
         <MyNav />
-        <div className="flex items-center justify-center h-screen">
+        <div className="flex items-center justify-center h-screen bg-gradient-to-t from-thema1 via-thema2 to-thema3">
           <Spinner />
         </div>
       </div>

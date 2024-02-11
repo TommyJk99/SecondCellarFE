@@ -1,0 +1,16 @@
+.input {
+  padding: 6px;
+  border-radius: 10px;
+}
+
+.textarea {
+  padding: 6px;
+  border-radius: 10px;
+  width: 80%;
+  height: 100px;
+}
+
+.select {
+  padding: 6px;
+  border-radius: 10px;
+}
