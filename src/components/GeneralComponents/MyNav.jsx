@@ -15,7 +15,7 @@ export default function MyNav({ userDetails }) {
   const navLinks = ["Home", "Buy", "MyCellar", "WineWorld"]
 
   return (
-    <nav className="sticky top-0 z-30 flex flex-col items-center justify-between w-full bg-white shadow-md shadow-thema3/60 md:pr-8 font-poppins md:flex-row 2xl:w-full 2xl:pr-8">
+    <nav className="sticky top-0 z-30 flex flex-col items-center justify-between w-full bg-white shadow-sm shadow-thema3/50 md:pr-8 font-poppins md:flex-row 2xl:w-full 2xl:pr-8">
       <div className="flex items-center justify-between w-full md:w-auto">
         <Link to={"/"}>
           <img src={Logo} alt="" className="object-contain w-[14rem]" />

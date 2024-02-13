@@ -14,3 +14,8 @@
   padding: 6px;
   border-radius: 10px;
 }
+
+.custom-swal-popup {
+  border-radius: 25px;
+  font: "Poppins";
+}

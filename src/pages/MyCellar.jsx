@@ -100,7 +100,7 @@ export default function MyCellar() {
         <MyNav userDetails={userDetails} />
         <div className="flex flex-col justify-center w-full min-h-screen font-poppins bg-gradient-to-t from-thema1 via-thema2 to-thema3">
           <SellFavoritesCart />
-          <OnSale />
+          <OnSale onSale={userDetails.onSale} userId={userDetails._id} />
         </div>
       </div>
     </div>
