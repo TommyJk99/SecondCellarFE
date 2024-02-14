@@ -52,10 +52,10 @@ const Searchbar = () => {
       {activeSearch.length > 0 && (
         <div className="absolute flex flex-col w-full gap-2 px-16 py-6 text-black -translate-x-1/2 bg-white shadow-inner shadow-thema4 top-28 rounded-custom4 left-1/2">
           {activeSearch.map((wine, index) => (
-            <Link to={`/wine/${encodeURIComponent(wine.wineName)}/${wine.publisher}`} key={`${wine.wineName}-${index}`}>
+            <Link to={`/buy/${encodeURIComponent(wine.wineName)}/${encodeURIComponent(wine.publisher.name)}`} key={`${wine.wineName}-${index}`}>
               <div className="flex justify-between">
                 <span>{wine.wineName}</span>
-                <span className="text-thema3">{wine.publisher}</span>
+                <span className="text-thema3">{wine.publisher.name}</span>
               </div>
               {/* <div className="w-full h-px bg-thema3"></div> */}
             </Link>

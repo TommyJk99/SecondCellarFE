@@ -9,7 +9,6 @@ import { checkAuth } from "../auth/AuthService"
 import { useScrollToTop } from "../components/MyHooks/scrollToTop"
 
 export default function Main() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [userDetails, setUserDetails] = useState(null)
 
   useScrollToTop()
@@ -18,14 +17,11 @@ export default function Main() {
     const authenticate = async () => {
       try {
         const userData = await checkAuth()
-        setIsAuthenticated(true)
         setUserDetails(userData) // Salva i dettagli dell'utente se autenticato
       } catch (error) {
-        setIsAuthenticated(false)
         setUserDetails(null) // Pulisci i dettagli dell'utente se l'autenticazione fallisce
       }
     }
-
     authenticate()
   }, [])
 
