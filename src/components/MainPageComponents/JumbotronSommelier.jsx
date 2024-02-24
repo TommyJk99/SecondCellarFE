@@ -1,15 +1,19 @@
 import AskSommelier from "../GeneralComponents/AskSommelier"
 import arrow from "../../assets/svg/arrow.svg"
-import { useInView } from "react-intersection-observer"
+import { motion } from "framer-motion"
 
 export default function JumbotronSommelier() {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.6,
-  })
-
   return (
-    <div ref={ref} className={`transition-opacity duration-500 ${inView ? "opacity-100" : "opacity-0"}`}>
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.7 }}
+      transition={{ duration: 1 }}
+      variants={{
+        hidden: { opacity: 0, x: -250 },
+        visible: { opacity: 1, x: 0 },
+      }}
+    >
       <div
         className="relative pt-10 pb-10 mb-16 shadow-md shadow-thema3 w-[23rem] sm:w-[40rem] lg:w-[45rem] xl:w-[45rem] bg-thema1 rounded-custom5"
         style={{ zIndex: 1 }}
@@ -26,6 +30,6 @@ export default function JumbotronSommelier() {
         <div className="absolute h-16 shadow-inner w-28 sm:h-32 sm:w-52 shadow-thema4 rounded-custom3 right-32 sm:right-72 bottom-6 bg-gradient-to-t from-thema1 to-thema2"></div>
         <img src={arrow} alt="SommelierBot" className="absolute w-20 sm:w-32 top-12 sm:top-16 lg:top-20 right-36 sm:right-40"></img>
       </div>
-    </div>
+    </motion.div>
   )
 }

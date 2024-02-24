@@ -1,15 +1,19 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { useInView } from "react-intersection-observer"
+import { motion } from "framer-motion"
 
 export default function SellBuyWorld() {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.6,
-  })
-
   return (
-    <div ref={ref} className={`transition-opacity duration-500 ${inView ? "opacity-100" : "opacity-0"}`}>
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 1 }}
+      transition={{ duration: 1 }}
+      variants={{
+        hidden: { opacity: 0, y: -50 },
+        visible: { opacity: 1, y: 0 },
+      }}
+    >
       <div className="flex flex-wrap gap-10 mx-6 mt-[-1rem] sm:mt-5 mb-14 justify-evenly">
         <Link
           to="/buy"
@@ -32,6 +36,6 @@ export default function SellBuyWorld() {
           <p className="font-bold text-[2.0rem] sm:text-4xl text-thema3 font-poppins">WineWorld</p>
         </Link>
       </div>
-    </div>
+    </motion.div>
   )
 }
