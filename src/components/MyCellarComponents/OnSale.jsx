@@ -10,6 +10,7 @@ export default function OnSale({ onSale, userId }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [wineDetails, setWineDetails] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const currentYear = new Date().getFullYear()
 
   //this useEffect is used to disable scrolling when the modal is open
   useEffect(() => {
@@ -123,15 +124,15 @@ export default function OnSale({ onSale, userId }) {
                 <option value="rosé">Rosé</option>
                 <option value="passito">Passito</option>
               </select>
-              <input name="wineProducer" placeholder="Wine Producer" type="text" className="input" />
-              <input name="vintage" placeholder="Vintage" type="number" className="input" />
-              <input name="wineRegion" placeholder="Wine Region" type="text" className="input" />
-              <input name="grapes" placeholder="Grapes" type="text" className="input" />
-              <textarea name="wineDescription" placeholder="Wine Description" className="textarea" />
-              <input name="winePrice" placeholder="Wine Price" type="number" step="0.01" required className="input" />
-              <input name="availableQuantity" placeholder="Available Quantity" type="number" className="input" />
-              <input name="publisher" type="hidden" value={userId} />
-              <input name="wineImages" type="file" className="input" />
+              <input name="wineProducer" placeholder="Wine Producer" type="text" className="input" required />
+              <input name="vintage" placeholder="Vintage" type="number" className="input" required min={1900} max={currentYear} />
+              <input name="wineRegion" placeholder="Wine Region" type="text" className="input" required />
+              <input name="grapes" placeholder="Grapes" type="text" className="input" required />
+              <textarea name="wineDescription" placeholder="Wine Description (min 10 characters)" className="textarea" minLength={10} required />
+              <input name="winePrice" placeholder="Wine Price" type="number" step="0.01" required className="input" min={0} max={1000000} />
+              <input name="availableQuantity" placeholder="Available Quantity" type="number" className=" input" required min={0} />
+              <input name="publisher" type="hidden" value={userId} required />
+              <input name="wineImages" type="file" className=" file" required />
               <button type="submit" className="block p-2 text-center text-white rounded-lg shadow-md shadow-thema4 bg-thema3">
                 Add Wine
               </button>

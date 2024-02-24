@@ -38,8 +38,18 @@ export default function WineCard({ wineName, wineImages, wineId, onWineDeleted }
         </div>
       </div>
       <Modal open={isModalOpen} onClose={handleCloseModal}>
-        <button onClick={() => deleteWine(wineId)}>Delete</button>
-        <button onClick={handleCloseModal}>Cancel</button>
+        <div className="flex flex-col items-center justify-center h-full">
+          <p className="bold text-[1.2rem] text-center  text-thema4">Are you sure you want to delete the wine?</p>
+          <div className="flex gap-8 pt-8">
+            {" "}
+            <button className="p-4 font-bold text-white bg-thema4 rounded-2xl hover:bg-thema3" onClick={() => deleteWine(wineId)}>
+              Delete
+            </button>
+            <button className="p-4 bg-white rounded-2xl hover:bg-thema5 hover:text-white" onClick={handleCloseModal}>
+              Cancel
+            </button>
+          </div>
+        </div>
       </Modal>
     </div>
   )
