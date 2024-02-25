@@ -90,7 +90,7 @@ export default function OnSale({ onSale, userId }) {
   }
 
   return (
-    <div className="mb-20 overflow-y-auto">
+    <div id="sell" className="mb-20 overflow-y-auto">
       <div className="flex justify-center">
         <div className="bg-white min-h-24 w-[70rem] rounded-3xl mt-[4rem] shadow-inner shadow-thema4">
           <div className="flex items-center gap-4 p-4 mt-2">

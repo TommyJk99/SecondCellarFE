@@ -6,6 +6,7 @@ import SellFavoritesCart from "../components/MyCellarComponents/SellFavoritesCar
 import { checkAuth, refreshToken } from "../auth/AuthService"
 import OnSale from "../components/MyCellarComponents/OnSale"
 import { useScrollToTop } from "../components/MyHooks/scrollToTop"
+import Favorites from "../components/MyCellarComponents/Favorites"
 
 export default function MyCellar() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -101,6 +102,7 @@ export default function MyCellar() {
         <div className="flex flex-col justify-center w-full min-h-screen font-poppins bg-gradient-to-t from-thema1 via-thema2 to-thema3">
           <SellFavoritesCart />
           <OnSale onSale={userDetails.onSale} userId={userDetails._id} />
+          <Favorites favorites={userDetails.favorites} userId={userDetails._id} />
         </div>
       </div>
     </div>

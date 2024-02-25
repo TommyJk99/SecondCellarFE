@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import AnchorLink from "react-anchor-link-smooth-scroll"
 
 export default function SellFavoritesCart() {
   const [hoveredButton, setHoveredButton] = useState(null)
@@ -16,20 +17,12 @@ export default function SellFavoritesCart() {
     cart: "rounded-custom3",
   }
 
-  // Funzione per gestire lo scroll alla sezione specifica
-  const handleScrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId)
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" })
-    }
-  }
-
   return (
     <div className="flex flex-wrap gap-10 mt-10 justify-evenly mb-14">
       {Object.keys(buttonHoverText).map((button) => (
-        <div
+        <AnchorLink
+          href={`#${button}`} //this is the ref for the AnchorLink, rember to add the other ids
           key={button}
-          onClick={() => handleScrollToSection(button)}
           onMouseEnter={() => setHoveredButton(button)}
           onMouseLeave={() => setHoveredButton(null)}
           className={`flex shadow-thema4/70  items-center justify-center w-[280px] h-[100px] transform transition-all duration-500  hover:shadow-inner hover:shadow-thema4 hover:bg-white ${buttonRoundedClasses[button]} shadow-lg bg-thema1 border-thema3 cursor-pointer`}
@@ -42,7 +35,7 @@ export default function SellFavoritesCart() {
           >
             {hoveredButton === button ? buttonHoverText[button] : button.charAt(0).toUpperCase() + button.slice(1)}
           </p>
-        </div>
+        </AnchorLink>
       ))}
     </div>
   )

@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 export default function CustomShadowComponent({ text }) {
-  const urlText = text.toLowerCase().replace(/\s+/g, "-")
+  // const urlText = text.toLowerCase().replace(/\s+/g, "-")
   return (
     // <Link to={`/wineworld/${urlText}`}> remember to change the link to the correct path!!
     <Link to={`/wineworld/the-vine`}>

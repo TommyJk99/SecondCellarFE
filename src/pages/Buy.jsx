@@ -20,6 +20,7 @@ export default function Buy() {
   }, [])
 
   useScrollToTop()
+
   return (
     <div className="flex justify-center min-h-screen">
       <div className="max-w-[1920px] w-full">
